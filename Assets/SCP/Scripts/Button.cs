@@ -13,8 +13,7 @@ public class Button : MonoBehaviour
 	void OnTriggerEnter( Collider other )
 	{
 		var player = Player.Instance;
-		if ( other.gameObject != player.gameObject )
-			return;
+		if ( other.gameObject != player.gameObject ) return;
 
 		player.UseEntity = this;
 	}
@@ -22,10 +21,8 @@ public class Button : MonoBehaviour
 	void OnTriggerExit( Collider other )
 	{
 		var player = Player.Instance;
-		if ( other.gameObject != player.gameObject )
-			return;
-		if ( player.UseEntity != this )
-			return;
+		if ( other.gameObject != player.gameObject ) return;
+		if ( player.UseEntity != this ) return;
 
 		player.UseEntity = null;
 	}
