@@ -2,18 +2,30 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 using Cinemachine;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
 	public static Player Instance { get; private set; }
 	
-	public Button UseEntity { get; set; }
+	public Vector3 ViewPos => Camera.main.transform.position;
+	public Vector3 ViewDir => Camera.main.transform.forward;
 
+	public UseableEntity UseEntity { get; set; }
+
+	public readonly List<Item> Inventory = new();
+	public int MaxInventorySlots = 8;
+	public bool IsInventoryFull => Inventory.Count > MaxInventorySlots;
+
+	[Header( "Camera Noise" )]
 	public CinemachineVirtualCamera CinemachineVC;
 	public float DefaultCameraNoiseFrequency = .3f;
 	public float WalkCameraNoiseFrequency = 1.0f;
 	public float RunCameraNoiseFrequency = 3.0f;
 	public float SmoothNoiseFrequencySpeed = 3.0f;
+
+	[Header( "Misc" )]
+	public float DropItemDistance = 2.0f;
 
 	StarterAssets.StarterAssetsInputs inputs;
 	CinemachineBasicMultiChannelPerlin cinemachineNoise;
@@ -52,6 +64,13 @@ public class Player : MonoBehaviour
 	{
 		if ( UseEntity == null ) return;
 
-		UseEntity.Use();
+		UseEntity.Use( this );
+	}
+
+	public void OnDrop( InputValue input )
+	{
+		if ( Inventory.Count == 0 ) return;
+
+		Inventory[0].Drop();
 	}
 }
