@@ -7037,10 +7037,6 @@ PrefabInstance:
       propertyPath: CinemachineVC
       value: 
       objectReference: {fileID: 1355333559}
-    - target: {fileID: 136751850673856526, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      propertyPath: DropItemDistance
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5393215578589016655, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

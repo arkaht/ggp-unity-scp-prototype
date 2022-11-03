@@ -361,8 +361,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a4f1fe5a11c6945afd3bf3bbd59565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxInventorySlots: 8
   CinemachineVC: {fileID: 0}
   DefaultCameraNoiseFrequency: 0.3
   WalkCameraNoiseFrequency: 2
   RunCameraNoiseFrequency: 5
   SmoothNoiseFrequencySpeed: 5
+  DropItemDistance: 1
