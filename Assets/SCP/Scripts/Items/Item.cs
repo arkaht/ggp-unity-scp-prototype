@@ -19,6 +19,9 @@ public class Item : UseableEntity
 	{
 		//  register in inventory
 		player.AddItemToInventory( this );
+
+		//  reset use entity
+		player.UseEntity = null;
 	}
 
 	public void Drop()
@@ -30,7 +33,7 @@ public class Item : UseableEntity
 		Vector3 pos = Owner.ViewPos, dir = Owner.ViewDir;
 
 		//  get drop pos
-		if ( Physics.Raycast( pos, dir, out RaycastHit hit, dist ) )
+		if ( Physics.Raycast( pos, dir, out RaycastHit hit, dist  ) )
 		{
 			pos = hit.point;
 		}
