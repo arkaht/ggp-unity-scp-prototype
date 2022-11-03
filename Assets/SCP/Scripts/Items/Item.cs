@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class Item : UseableEntity
 {
-	public Player Owner { get; private set; }
+	public Sprite Sprite;
+
+	public Player Owner { get; set; }
+	public int InventoryID { get; set; }
 
 	public override bool CanUse( Player player )
 	{
@@ -15,14 +18,7 @@ public class Item : UseableEntity
 	protected override void OnUse( Player player )
 	{
 		//  register in inventory
-		player.Inventory.Add( this );
-
-		//  setup transform
-		transform.SetParent( player.transform );
-		transform.localPosition = Vector3.zero;
-
-		//  set owner
-		Owner = player;
+		player.AddItemToInventory( this );
 	}
 
 	public void Drop()
@@ -44,11 +40,9 @@ public class Item : UseableEntity
 		}
 
 		//  setup transform
-		transform.SetParent( null );
 		transform.position = pos;
 
 		//  remove owner references
-		Owner.Inventory.Remove( this );
-		Owner = null;
+		Owner.RemoveItemFromInventory( this );
 	}
 }

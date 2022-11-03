@@ -249,7 +249,6 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   analogMovement: 0
-  cursorLocked: 1
   cursorInputForLook: 1
 --- !u!114 &8616685848737228376
 MonoBehaviour:
@@ -361,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a4f1fe5a11c6945afd3bf3bbd59565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxInventorySlots: 8
+  MaxInventorySlots: 10
   CinemachineVC: {fileID: 0}
   DefaultCameraNoiseFrequency: 0.3
   WalkCameraNoiseFrequency: 2
