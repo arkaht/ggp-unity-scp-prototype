@@ -180,13 +180,7 @@ public class Player : MonoBehaviour
         InventoryUI.Instance.Toggle();
     }
 
-    private void OnApplicationFocus(bool hasFocus)
-    {
-        SetCursorLocked(hasFocus);
-    }
+    private void OnApplicationFocus(bool hasFocus) => SetCursorLocked(hasFocus);
 
-    public static void SetCursorLocked(bool is_locked)
-    {
-        Cursor.lockState = is_locked ? CursorLockMode.Locked : CursorLockMode.None;
-    }
+    public static void SetCursorLocked(bool is_locked) => Cursor.lockState = is_locked ? CursorLockMode.Locked : CursorLockMode.None;
 }
