@@ -109,17 +109,20 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IBeginDragHa
 		}
 		else
 		{
+			Item previous_item = player.EquipedItem;
+			
+			//  set equiped item
+			player.EquipedItem = Item;
+
 			//  update previous selected slot visual
-			if ( player.EquipedItem != null )
+			if ( previous_item != null )
 			{
-				InventorySlotUI slot = InventoryUI.Instance.GetSlotFor( player.EquipedItem );
+				InventorySlotUI slot = InventoryUI.Instance.GetSlotFor( previous_item );
 				if ( slot != null )
 				{
-					slot.SetItem( slot.Item );
+					slot.SetItem( previous_item );
 				}
 			}
-
-			player.EquipedItem = Item;
 		}
 
 		//  update visual
