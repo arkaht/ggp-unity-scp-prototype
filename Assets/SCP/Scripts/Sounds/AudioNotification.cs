@@ -4,44 +4,35 @@ using UnityEngine;
 
 public class AudioNotification : MonoBehaviour
 {
-    public static AudioSource PlayAudioAt( Vector3 pos, AudioClip sound, float volume = 1.0f )
+    public AudioClip Sound;
+    private AudioSource audioNotification;
+
+    private void Awake() => audioNotification = GetComponent<AudioSource>();
+
+    private void Start() => audioNotification.PlayOneShot(Sound);
+
+    private void Update()
     {
-        GameObject obj = new GameObject( "AudioNotification" );
+        if (audioNotification.isPlaying) return;
+
+        Destroy(gameObject);
+    }
+
+    public static AudioSource PlayAudioAt(Vector3 pos, AudioClip sound, float volume = 1.0f)
+    {
+        var obj = new GameObject("AudioNotification");
         obj.transform.position = pos;
 
-        //  add audio source
-        AudioSource audio = obj.AddComponent<AudioSource>();
-        audio.volume = volume;
+        //  add audioNotification source
+        AudioSource audioNotification = obj.AddComponent<AudioSource>();
+        audioNotification.volume = volume;
 
-        //  add audio notification
+        //  add audioNotification notification
         obj.AddComponent<AudioNotification>().Sound = sound;
 
-        return audio;
-    }
-    public static AudioSource PlayAudioAt( Vector3 pos, AudioClip[] sounds, float volume = 1.0f )
-    {
-        return PlayAudioAt( pos, sounds[Random.Range( 0, sounds.Length )], volume );
+        return audioNotification;
     }
 
-    public AudioClip Sound;
-
-    new AudioSource audio;
-
-    void Awake()
-    {
-        audio = GetComponent<AudioSource>();
-    }
-
-    void Start()
-    {
-        audio.PlayOneShot( Sound );     
-    }
-
-    void Update()
-    {
-        if ( !audio.isPlaying )
-        {
-            Destroy( gameObject );
-        }
-    }
+    public static AudioSource PlayAudioAt(Vector3 pos, AudioClip[] sounds, float volume = 1.0f) =>
+         PlayAudioAt(pos, sounds[Random.Range(0, sounds.Length)], volume);
 }

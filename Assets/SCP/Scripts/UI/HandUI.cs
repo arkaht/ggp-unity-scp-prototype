@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class HandUI : MonoBehaviour
@@ -57,6 +58,8 @@ public class HandUI : MonoBehaviour
 
     private void ScreenWiggle()
     {
+        if (entity == null) { Debug.LogWarning($"{typeof(HandUI)}.cs::{nameof(entity)} is null reference."); return; }
+
         Vector2 getScreenPosition = Camera.main.WorldToScreenPoint(entity.transform.position);
 
         getScreenPosition.x = Mathf.Clamp(getScreenPosition.x, ClampMargin, screenSize.x - ClampMargin);

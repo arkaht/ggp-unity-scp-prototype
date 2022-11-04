@@ -8,30 +8,29 @@ public class SoundTrigger : MonoBehaviour
     public bool SingleUse = true;
     public Vector3 PositionRange;
 
-    new AudioSource audio;
-    new Collider collider;
+    private AudioSource targetAudio;
+    private Collider collider;
 
-    void Awake()
+    private void Awake()
     {
-        audio = GetComponent<AudioSource>();
+        targetAudio = GetComponent<AudioSource>();
         collider = GetComponent<Collider>();
     }
 
-    void OnTriggerEnter( Collider other )
+    private void OnTriggerEnter(Collider other)
     {
-        audio.PlayOneShot( Utils.GetRandomElement( Sounds ) );
+        targetAudio.PlayOneShot(Utils.GetRandomElement(Sounds));
 
-        //  disable on single use
-        if ( SingleUse )
-        {
-            collider.enabled = false;
-        }
+        if (SingleUse) collider.enabled = false;
 
-        //  translate play position
-        if ( PositionRange != Vector3.zero )
-        {
-            float angle = Mathf.Deg2Rad * Random.Range( 0.0f, 360.0f );
-            transform.position += new Vector3( Mathf.Cos( angle ) * PositionRange.x, Mathf.Sin( angle ) * PositionRange.y, Mathf.Tan( angle ) * PositionRange.z );
-        }
+        if (PositionRange == Vector3.zero) return;
+
+        TranslatePlayPosition();
+    }
+
+    private void TranslatePlayPosition()
+    {
+        float angle = Mathf.Deg2Rad * Random.Range(0.0f, 360.0f);
+        transform.position += new Vector3(Mathf.Cos(angle) * PositionRange.x, Mathf.Sin(angle) * PositionRange.y, Mathf.Tan(angle) * PositionRange.z);
     }
 }

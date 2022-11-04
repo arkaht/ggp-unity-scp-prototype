@@ -7,33 +7,26 @@ public class AmbientPlayer : MonoBehaviour
     public AudioClip[] AmbientSounds;
     public Vector2 RangeCooldown;
 
-    float nextSoundCooldown = 0.0f;
+    private float nextSoundCooldown = 0.0f;
+    private AudioSource ambientPlayerAudio;
 
-    new AudioSource audio;
+    private void Awake() => ambientPlayerAudio = GetComponent<AudioSource>();
 
-    void Awake()
+    private void Update()
     {
-        audio = GetComponent<AudioSource>();
-    }
+        if (AmbientSounds.Length == 0) return;
 
-    void Update()
-    {
-        if ( AmbientSounds.Length == 0 ) return;
+        if (ambientPlayerAudio.isPlaying) return;
 
-        if ( !audio.isPlaying )
-        {
-            if ( ( nextSoundCooldown -= Time.deltaTime ) <= 0.0f )
-            {
-                NextSound();
-            }
-        }
+        if ((nextSoundCooldown -= Time.deltaTime) <= 0.0f)
+            NextSound();
     }
 
     public void NextSound()
     {
-        audio.clip = Utils.GetRandomElement( AmbientSounds );
-        audio.Play();
+        ambientPlayerAudio.clip = Utils.GetRandomElement(AmbientSounds);
+        ambientPlayerAudio.Play();
 
-        nextSoundCooldown = Random.Range( RangeCooldown.x, RangeCooldown.y );
+        nextSoundCooldown = Random.Range(RangeCooldown.x, RangeCooldown.y);
     }
 }

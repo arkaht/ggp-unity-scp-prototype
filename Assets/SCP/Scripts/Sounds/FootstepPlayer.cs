@@ -7,28 +7,23 @@ public class FootstepPlayer : MonoBehaviour
     public AudioClip[] Sounds;
     public float PlayCooldown = 0.6f;
 
-    int soundID = 0;
-    float nextPlayCooldown = 0.0f;
+    private int soundID = 0;
+    private float nextPlayCooldown = 0.0f;
+    private AudioSource audio;
 
-    new AudioSource audio;
+    private void Awake() => audio = GetComponent<AudioSource>();
 
-    void Awake()
+    private void Update()
     {
-        audio = GetComponent<AudioSource>();
-    }
+        if ((nextPlayCooldown -= Time.deltaTime) > 0.0f) return;
 
-    void Update()
-    {
-        if ( ( nextPlayCooldown -= Time.deltaTime ) <= 0.0f )
-        {
-            Play();
-        }
+        Play();
     }
 
     public void Play()
     {
-        soundID = ( soundID + Random.Range( 1, 3 ) ) % Sounds.Length;
-        audio.PlayOneShot( Sounds[soundID] );
+        soundID = (soundID + Random.Range(1, 3)) % Sounds.Length;
+        audio.PlayOneShot(Sounds[soundID]);
 
         nextPlayCooldown = PlayCooldown;
     }
