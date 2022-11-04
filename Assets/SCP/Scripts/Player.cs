@@ -26,6 +26,12 @@ public class Player : MonoBehaviour
 	public float RunCameraNoiseFrequency = 3.0f;
 	public float SmoothNoiseFrequencySpeed = 3.0f;
 
+	float noiseFrequency = 0.0f;
+
+	[Header( "Sounds" )]
+	public FootstepPlayer WalkFoostepPlayer;
+	public FootstepPlayer RunFoostepPlayer;
+
 	[Header( "Misc" )]
 	public float DropItemDistance = 2.0f;
 
@@ -40,26 +46,57 @@ public class Player : MonoBehaviour
 		cinemachineNoise = CinemachineVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 	}
 
-	void Update()
+	void OnWalkUpdate()
 	{
-		#region MovementShake
+        //  footsteps players
+        WalkFoostepPlayer.enabled = true;
+        RunFoostepPlayer.enabled = false;
+
 		//  get appropriate frequency
-		float frequency = DefaultCameraNoiseFrequency;
+		noiseFrequency = WalkCameraNoiseFrequency;
+    }
+
+    void OnRunUpdate()
+	{
+        //  footsteps players
+        WalkFoostepPlayer.enabled = false;
+        RunFoostepPlayer.enabled = true;
+
+		//  get appropriate frequency
+		noiseFrequency = RunCameraNoiseFrequency;
+    }
+
+	void OnIdleUpdate()
+	{
+        //  footsteps players
+        WalkFoostepPlayer.enabled = false;
+        RunFoostepPlayer.enabled = false;
+
+		//  get appropriate frequency
+        noiseFrequency = DefaultCameraNoiseFrequency;
+    }
+
+    void Update()
+	{
+		//  movement updates
 		if ( inputs.move != Vector2.zero )
 		{
 			if ( inputs.sprint )
 			{
-				frequency = RunCameraNoiseFrequency;
+				OnRunUpdate();
 			}
 			else
 			{
-				frequency = WalkCameraNoiseFrequency;
+				OnWalkUpdate();
 			}
 		}
+		else
+		{
+			OnIdleUpdate();
+		}
 
-		//  smoothing frequency
-		cinemachineNoise.m_FrequencyGain = Mathf.Lerp( cinemachineNoise.m_FrequencyGain, frequency, Time.deltaTime * SmoothNoiseFrequencySpeed );
-		#endregion
+		//  smoothing noise frequency
+		cinemachineNoise.m_FrequencyGain = Mathf.Lerp( cinemachineNoise.m_FrequencyGain, noiseFrequency, Time.deltaTime * SmoothNoiseFrequencySpeed );
 	} 
 
 	public void AddItemToInventory( Item item )
