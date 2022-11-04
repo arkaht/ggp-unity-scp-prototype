@@ -5,28 +5,24 @@ using UnityEngine.Events;
 
 public class Button : UseableEntity
 {
-	public UnityEvent useCallback;
+    public UnityEvent useCallback;
+    public AudioClip UseSound;
 
-	public AudioClip UseSound;
+    private AudioSource buttonAudio;
 
-	new AudioSource audio;
+    private void Awake() => buttonAudio = GetComponent<AudioSource>();
 
-	void Awake()
-	{
-		audio = GetComponent<AudioSource>();
-	}
+    protected override void OnUse(Player player)
+    {
+        if (useCallback == null)
+        {
+            Debug.LogError("Button " + gameObject + " is not assigned to any events!");
+            return;
+        }
 
-	protected override void OnUse( Player player )
-	{
-		if ( useCallback == null ) 
-		{
-			Debug.LogError( "Button " + gameObject + " is not assigned to any events!" );
-			return;
-		}
+        useCallback.Invoke();
 
-		useCallback.Invoke();
-
-		//  play use sound
-		audio.PlayOneShot( UseSound );
-	}
+        //  play use sound
+        buttonAudio.PlayOneShot(UseSound);
+    }
 }
