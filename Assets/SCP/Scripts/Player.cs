@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     public float RunCameraNoiseFrequency = 3.0f;
     public float SmoothNoiseFrequencySpeed = 3.0f;
 
-    float noiseFrequency = 0.0f;
+    private float noiseFrequency = 0.0f;
 
     [Header("Sounds")]
     public FootstepPlayer WalkFoostepPlayer;
@@ -35,10 +35,10 @@ public class Player : MonoBehaviour
     [Header("Misc")]
     public float DropItemDistance = 2.0f;
 
-    StarterAssets.StarterAssetsInputs inputs;
-    CinemachineBasicMultiChannelPerlin cinemachineNoise;
+    private StarterAssets.StarterAssetsInputs inputs;
+    private CinemachineBasicMultiChannelPerlin cinemachineNoise;
 
-    void Awake()
+    private void Awake()
     {
         Instance = this;
 
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         cinemachineNoise = CinemachineVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
-    void OnWalkUpdate()
+    private void OnWalkUpdate()
     {
         //  footsteps players
         WalkFoostepPlayer.enabled = true;
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         noiseFrequency = WalkCameraNoiseFrequency;
     }
 
-    void OnRunUpdate()
+    private void OnRunUpdate()
     {
         //  footsteps players
         WalkFoostepPlayer.enabled = false;
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         noiseFrequency = RunCameraNoiseFrequency;
     }
 
-    void OnIdleUpdate()
+    private void OnIdleUpdate()
     {
         //  footsteps players
         WalkFoostepPlayer.enabled = false;
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
         noiseFrequency = DefaultCameraNoiseFrequency;
     }
 
-    void Update()
+    private void Update()
     {
         //  movement updates
         if (inputs.move != Vector2.zero)
@@ -180,7 +180,7 @@ public class Player : MonoBehaviour
         InventoryUI.Instance.Toggle();
     }
 
-    void OnApplicationFocus(bool hasFocus)
+    private void OnApplicationFocus(bool hasFocus)
     {
         SetCursorLocked(hasFocus);
     }
