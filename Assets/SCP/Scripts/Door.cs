@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : ActivableEntity
 {
-	public AudioClip[] OpenSounds, CloseSounds;
+	[Header( "Access Level" )]
+	public int AccessLevel = 0;
+	public AudioClip AuthorizedSound, RefusedSound;
+
+	[Header( "Trigger Sounds" )]
+	public AudioClip[] OpenSounds;
+	public AudioClip[] CloseSounds;
 
 	bool isOpen = false;
 
@@ -31,5 +37,24 @@ public class Door : MonoBehaviour
 	public void Toggle()
 	{
 		SetToggle( !isOpen );
+	}
+
+	public override bool Activate( Player player, UseableEntity caller )
+	{
+		//  check keycard required
+		if ( AccessLevel > 0 )
+		{
+			var keycard = (KeycardItem) player.EquipedItem;
+			if ( keycard == null || keycard.AccessLevel < AccessLevel )
+			{
+				AudioNotification.PlayAudioAt( transform.position, RefusedSound, .5f );
+				return false;
+			}
+
+			AudioNotification.PlayAudioAt( transform.position, AuthorizedSound, .5f );
+		}
+
+		Toggle();
+		return true;
 	}
 }

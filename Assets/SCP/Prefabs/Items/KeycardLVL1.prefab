@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6259673763831890745}
   - component: {fileID: 6259673763831890746}
   - component: {fileID: 1191718871628871443}
-  - component: {fileID: 1633852643915027258}
+  - component: {fileID: 1591727870514321812}
   m_Layer: 0
-  m_Name: Keycard
+  m_Name: KeycardLVL1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,15 +27,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6259673763831890747}
-  m_LocalRotation: {x: -0, y: -0.9448719, z: -0, w: 0.32744023}
-  m_LocalPosition: {x: 14.682, y: 1.01, z: -5.152}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5860429282976195502}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -141.773, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6259673763831890745
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -51,7 +51,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &6259673763831890746
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1633852643915027258
+--- !u!114 &1591727870514321812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,13 +87,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6259673763831890747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08b6aa9aa11900040b05803afba782b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 82247c347fca648418ec489870bdf5a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UseCooldown: 1
-  Sprite: {fileID: 21300000, guid: 900a1c7c4025aac468f6403dd5ffd400, type: 3}
+  Sprite: {fileID: 21300000, guid: 954eec332fe8ff248add1fc6f7be1818, type: 3}
   PickSound: {fileID: 8300000, guid: 6288afabc71477f4a81c9aa32ccb55bf, type: 3}
   DropSound: {fileID: 8300000, guid: d2cc1981b9fa700488c9bccac333d8f8, type: 3}
+  AccessLevel: 1
+  AuthorizedSound: {fileID: 8300000, guid: 9e13172f8058f4945b3b1d9fca95b4fd, type: 3}
+  RefusedSound: {fileID: 8300000, guid: 6b47b69b5aa8b254395269de479cb836, type: 3}
 --- !u!1001 &6259673763674752069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,7 +167,7 @@ PrefabInstance:
     - target: {fileID: -2820083625476546059, guid: 764654285e56f0549bab01b6d6809cae, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8481d5c20d676014a878f0ec763c9218, type: 2}
+      objectReference: {fileID: 2100000, guid: 62b8a608a4efa3a4383307cd4be42fa0, type: 2}
     - target: {fileID: 919132149155446097, guid: 764654285e56f0549bab01b6d6809cae, type: 3}
       propertyPath: m_Name
       value: Model

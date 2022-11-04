@@ -250,6 +250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b5b4754a49462478f51c8aa9f4a2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AccessLevel: 0
+  AuthorizedSound: {fileID: 8300000, guid: 9e13172f8058f4945b3b1d9fca95b4fd, type: 3}
+  RefusedSound: {fileID: 8300000, guid: 6b47b69b5aa8b254395269de479cb836, type: 3}
   OpenSounds:
   - {fileID: 8300000, guid: 50e927c6778b70d4cb46c23db95872c2, type: 3}
   - {fileID: 8300000, guid: 774c615d5d3c1c642a87268f167558e7, type: 3}
@@ -366,6 +369,10 @@ PrefabInstance:
       value: Button01
       objectReference: {fileID: 0}
     - target: {fileID: 477295658304551096, guid: a12d69a5ff51b0a48b13cfbde9868aeb, type: 3}
+      propertyPath: ActiveEntity
+      value: 
+      objectReference: {fileID: 7555025574328162101}
+    - target: {fileID: 477295658304551096, guid: a12d69a5ff51b0a48b13cfbde9868aeb, type: 3}
       propertyPath: useCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7555025574328162101}
@@ -431,6 +438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button02
       objectReference: {fileID: 0}
+    - target: {fileID: 477295658304551096, guid: a12d69a5ff51b0a48b13cfbde9868aeb, type: 3}
+      propertyPath: ActiveEntity
+      value: 
+      objectReference: {fileID: 7555025574328162101}
     - target: {fileID: 477295658304551096, guid: a12d69a5ff51b0a48b13cfbde9868aeb, type: 3}
       propertyPath: useCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

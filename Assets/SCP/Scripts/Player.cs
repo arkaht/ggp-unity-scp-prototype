@@ -170,6 +170,12 @@ public class Player : MonoBehaviour
 	{
 		if ( item.InventoryID == -1 ) return;
 
+		//  remove from equiped
+		if ( item == EquipedItem )
+		{
+			EquipedItem = null;
+		}
+
 		//  remove from inventory
 		Inventory.Remove( item.InventoryID );
 		item.Owner = null;

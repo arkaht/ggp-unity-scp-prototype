@@ -61,21 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UseCooldown: 1.5
-  useCallback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Door, Assembly-CSharp
-        m_MethodName: Toggle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  ActiveEntity: {fileID: 0}
   UseSound: {fileID: 8300000, guid: 4963eb4643f2c964c8af393bdd9010c6, type: 3}
 --- !u!82 &1419625126290886411
 AudioSource:
@@ -89,7 +75,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

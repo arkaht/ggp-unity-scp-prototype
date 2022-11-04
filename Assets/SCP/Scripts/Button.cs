@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Button : UseableEntity
 {
-	public UnityEvent useCallback;
+	public ActivableEntity ActiveEntity;
 
 	public AudioClip UseSound;
 
@@ -18,13 +18,14 @@ public class Button : UseableEntity
 
 	protected override void OnUse( Player player )
 	{
-		if ( useCallback == null ) 
+		if ( ActiveEntity == null ) 
 		{
-			Debug.LogError( "Button " + gameObject + " is not assigned to any events!" );
+			Debug.LogError( "Button " + gameObject + " is not assigned to an activable entity!" );
 			return;
 		}
 
-		useCallback.Invoke();
+		//  activate
+		ActiveEntity.Activate( player, this );
 
 		//  play use sound
 		audio.PlayOneShot( UseSound );
