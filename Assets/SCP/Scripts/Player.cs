@@ -50,35 +50,35 @@ public class Player : MonoBehaviour
 
 	void OnWalkUpdate()
 	{
-        //  footsteps players
-        WalkFoostepPlayer.enabled = true;
-        RunFoostepPlayer.enabled = false;
+		//  footsteps players
+		WalkFoostepPlayer.enabled = true;
+		RunFoostepPlayer.enabled = false;
 
 		//  get appropriate frequency
 		noiseFrequency = WalkCameraNoiseFrequency;
-    }
+	}
 
-    void OnRunUpdate()
+	void OnRunUpdate()
 	{
-        //  footsteps players
-        WalkFoostepPlayer.enabled = false;
-        RunFoostepPlayer.enabled = true;
+		//  footsteps players
+		WalkFoostepPlayer.enabled = false;
+		RunFoostepPlayer.enabled = true;
 
 		//  get appropriate frequency
 		noiseFrequency = RunCameraNoiseFrequency;
-    }
+	}
 
 	void OnIdleUpdate()
 	{
-        //  footsteps players
-        WalkFoostepPlayer.enabled = false;
-        RunFoostepPlayer.enabled = false;
+		//  footsteps players
+		WalkFoostepPlayer.enabled = false;
+		RunFoostepPlayer.enabled = false;
 
 		//  get appropriate frequency
-        noiseFrequency = DefaultCameraNoiseFrequency;
-    }
+		noiseFrequency = DefaultCameraNoiseFrequency;
+	}
 
-    void Update()
+	void Update()
 	{
 		//  movement updates
 		if ( inputs.move != Vector2.zero )
@@ -125,17 +125,17 @@ public class Player : MonoBehaviour
 			{
 				UseEntity = UseableEntitiesPool[0];
 				UseableEntitiesPool.RemoveAt( 0 );
-            }
-        }
+			}
+		}
 		else 
 		{
 			int id = UseableEntitiesPool.IndexOf( ent );
 
-            if ( id > -1 )
+			if ( id > -1 )
 			{
 				UseableEntitiesPool.Remove( ent );
-            }
-        }
+			}
+		}
 	}
 
 	public void AddItemToInventory( Item item )

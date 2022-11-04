@@ -6,7 +6,7 @@ public class Item : UseableEntity
 	public AudioClip PickSound;
 	public AudioClip DropSound;
 
-    public Player Owner { get; set; }
+	public Player Owner { get; set; }
 	public int InventoryID { get; set; }
 
 	public override bool CanUse( Player player )
@@ -36,8 +36,8 @@ public class Item : UseableEntity
 		//  play drop sound
 		AudioNotification.PlayAudioAt( transform.position, DropSound, 0.5f );
 
-        //  prepare raycast
-        float dist = Owner.DropItemDistance;
+		//  prepare raycast
+		float dist = Owner.DropItemDistance;
 		Vector3 pos = Owner.ViewPos, dir = Owner.ViewDir;
 
 		//  get drop pos

@@ -31,7 +31,7 @@ public class UseableEntity : MonoBehaviour
 		player.RemoveUseable( this );
 	}
 
-    public virtual bool CanUse( Player player )
+	public virtual bool CanUse( Player player )
 	{
 		return useCooldown <= 0.0f;
 	}
