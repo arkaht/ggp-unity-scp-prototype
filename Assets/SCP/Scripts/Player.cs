@@ -78,25 +78,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        //  movement updates
-        if (inputs.move != Vector2.zero)
-        {
-            if (inputs.sprint)
-            {
-                OnRunUpdate();
-            }
-            else
-            {
-                OnWalkUpdate();
-            }
-        }
-        else
-        {
-            OnIdleUpdate();
-        }
+        PlayerMovementStateUpdate();
 
-        //  smoothing noise frequency
-        cinemachineNoise.m_FrequencyGain = Mathf.Lerp(cinemachineNoise.m_FrequencyGain, noiseFrequency, Time.deltaTime * SmoothNoiseFrequencySpeed);
+        ApplySmoothingNoiseFrequency();
     }
 
     public void AddItemToInventory(Item item)
@@ -181,6 +165,19 @@ public class Player : MonoBehaviour
     }
 
     private void OnApplicationFocus(bool hasFocus) => SetCursorLocked(hasFocus);
+
+    private void PlayerMovementStateUpdate()
+    {
+        if (inputs.move == Vector2.zero) { OnIdleUpdate(); return; }
+
+        if (inputs.sprint)
+            OnRunUpdate();
+        else
+            OnWalkUpdate();
+    }
+
+    private void ApplySmoothingNoiseFrequency() =>
+        cinemachineNoise.m_FrequencyGain = Mathf.Lerp(cinemachineNoise.m_FrequencyGain, noiseFrequency, Time.deltaTime * SmoothNoiseFrequencySpeed);
 
     public static void SetCursorLocked(bool is_locked) => Cursor.lockState = is_locked ? CursorLockMode.Locked : CursorLockMode.None;
 }
