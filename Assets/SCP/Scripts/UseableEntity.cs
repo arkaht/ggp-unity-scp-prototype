@@ -27,16 +27,14 @@ public class UseableEntity : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         var player = Player.Instance;
+
         if (other.gameObject != player.gameObject) return;
         if (player.UseEntity != this) return;
 
         player.UseEntity = null;
     }
 
-    public virtual bool CanUse(Player player)
-    {
-        return useCooldown <= 0.0f;
-    }
+    public virtual bool CanUse(Player player) => useCooldown <= 0.0f;
 
     public void Use(Player player)
     {
