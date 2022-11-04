@@ -2,51 +2,52 @@ using UnityEngine;
 
 public class UseableEntity : MonoBehaviour
 {
-	public float UseCooldown = 1.0f;
-	float useCooldown = 0.0f;
+    public float UseCooldown = 1.0f;
+    private float useCooldown = 0.0f;
 
-	void Update()
-	{
-		//  decrease cooldown
-		if ( useCooldown > 0.0f )
-		{
-			useCooldown -= Time.deltaTime;
-		}
-	}
+    private void Update()
+    {
+        //  decrease cooldown
+        if (useCooldown > 0.0f)
+        {
+            useCooldown -= Time.deltaTime;
+        }
+    }
 
-	void OnTriggerEnter( Collider other )
-	{
-		var player = Player.Instance;
-		if ( other.gameObject != player.gameObject ) return;
-		if ( !CanUse( player ) ) return;
+    private void OnTriggerEnter(Collider other)
+    {
+        var player = Player.Instance;
 
-		player.UseEntity = this;
-	}
+        if (other.gameObject != player.gameObject) return;
+        if (!CanUse(player)) return;
 
-	void OnTriggerExit( Collider other )
-	{
-		var player = Player.Instance;
-		if ( other.gameObject != player.gameObject ) return;
-		if ( player.UseEntity != this ) return;
+        player.UseEntity = this;
+    }
 
-		player.UseEntity = null;
-	}
+    private void OnTriggerExit(Collider other)
+    {
+        var player = Player.Instance;
+        if (other.gameObject != player.gameObject) return;
+        if (player.UseEntity != this) return;
 
-    public virtual bool CanUse( Player player )
-	{
-		return useCooldown <= 0.0f;
-	}
+        player.UseEntity = null;
+    }
 
-	public void Use( Player player )
-	{
-		if ( !CanUse( player ) ) return;
+    public virtual bool CanUse(Player player)
+    {
+        return useCooldown <= 0.0f;
+    }
 
-		//  use
-		OnUse( player );
+    public void Use(Player player)
+    {
+        if (!CanUse(player)) return;
 
-		//  apply cooldown
-		useCooldown = UseCooldown;
-	}
+        //  use
+        OnUse(player);
 
-	protected virtual void OnUse( Player player ) {}
+        //  apply cooldown
+        useCooldown = UseCooldown;
+    }
+
+    protected virtual void OnUse(Player player) { }
 }
