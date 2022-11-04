@@ -12,7 +12,7 @@ public class InventoryUI : MonoBehaviour
 
     public Vector2 SlotPadding = new( 300.0f, 500.0f );
 
-    List<InventorySlotUI> slots = new();
+    public readonly List<InventorySlotUI> Slots = new();
 
     void Awake()
 	{
@@ -38,7 +38,7 @@ public class InventoryUI : MonoBehaviour
             //  setup & register slot
             InventorySlotUI slot = obj.GetComponent<InventorySlotUI>();
             slot.InventoryID = i;
-            slots.Add( slot );
+            Slots.Add( slot );
 
             //  update offset
             offset.x = Mathf.Max( offset.x, obj.transform.localPosition.x );
@@ -66,7 +66,7 @@ public class InventoryUI : MonoBehaviour
         Player player = Player.Instance;
 
         int i = 0;
-		foreach ( InventorySlotUI slot in slots )
+		foreach ( InventorySlotUI slot in Slots )
 		{
             player.Inventory.TryGetValue( i++, out Item item );
 
@@ -90,4 +90,17 @@ public class InventoryUI : MonoBehaviour
         else
             Show();
 	}
+
+    public InventorySlotUI GetSlotFor( Item item )
+    {
+        foreach ( var slot in Slots )
+        {
+            if ( slot.Item == item )
+            {
+                return slot;
+            }
+        }
+
+        return null;
+    }
 }

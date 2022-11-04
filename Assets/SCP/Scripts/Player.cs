@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 	public UseableEntity UseEntity { get; set; }
 	List<UseableEntity> UseableEntitiesPool = new();
 
+	public Item EquipedItem { get; set; }
 	public readonly Dictionary<int, Item> Inventory = new();
 	public int MaxInventorySlots = 8;
 	public bool IsInventoryFull => Inventory.Count > MaxInventorySlots;
