@@ -2,48 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class HandUI : MonoBehaviour
 {
     public float ScreenToCenterWeight = 0.4f;
     public int ClampMargin = 200;
-
     public Sprite ItemSprite, ActionSprite;
 
-    Image image;
+    private Image image;
+    private Vector2 screenSize = new(Screen.width, Screen.height);
+    private Player player;
+    private UseableEntity entity;
 
-    Vector2 screenSize = new( Screen.width, Screen.height );
+    private void Awake() => image = GetComponent<Image>();
 
-    void Awake()
-	{
-        image = GetComponent<Image>();
-	}
-
-    void Update()
+    private void Start()
     {
-        Player player = Player.Instance;
-        if ( player == null ) return;
+        // cached fields for optimization
+        player = Player.Instance;
+        entity = player.UseEntity;
+    }
 
-        //  check use entity
-        UseableEntity entity = player.UseEntity;
-        if ( entity == null || !entity.CanUse( player ) )
-		{
+    private void Update()
+    {
+        ChechPlayerInstance();
+
+        CheckUseEentity();
+
+        ShowImage();
+
+        ScreenWiggle();
+    }
+
+    private void ChechPlayerInstance()
+    {
+        if (player == null) { Debug.LogError($"{typeof(HandUI)}.cs::{typeof(Player)}.cs is null reference."); return; }
+    }
+
+    private void CheckUseEentity()
+    {
+        if (entity == null || !entity.CanUse(player))
+        {
             image.enabled = false;
             return;
-		};
+        }
+    }
 
-        //  show image
+    private void ShowImage()
+    {
         image.enabled = true;
         image.sprite = entity is Item ? ItemSprite : ActionSprite;
+    }
 
-        //  get screen pos
-        Vector2 screen_pos = Camera.main.WorldToScreenPoint( entity.transform.position );
+    private void ScreenWiggle()
+    {
+        Vector2 getScreenPosition = Camera.main.WorldToScreenPoint(entity.transform.position);
 
-        //  clamp screen pos
-        screen_pos.x = Mathf.Clamp( screen_pos.x, ClampMargin, screenSize.x - ClampMargin );
-        screen_pos.y = Mathf.Clamp( screen_pos.y, ClampMargin, screenSize.x - ClampMargin );
+        getScreenPosition.x = Mathf.Clamp(getScreenPosition.x, ClampMargin, screenSize.x - ClampMargin);
+        getScreenPosition.y = Mathf.Clamp(getScreenPosition.y, ClampMargin, screenSize.x - ClampMargin);
 
-        //  lerp hand pos from screen pos to screen center
-        transform.position = Vector2.Lerp( screen_pos, screenSize / 2.0f, ScreenToCenterWeight );
+        transform.position = Vector2.Lerp(getScreenPosition, screenSize / 2.0f, ScreenToCenterWeight);
     }
 }
