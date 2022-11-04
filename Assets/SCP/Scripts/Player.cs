@@ -9,6 +9,8 @@ using Cinemachine;
 public class Player : MonoBehaviour
 {
 	public static Player Instance { get; private set; }
+
+	public bool InInterface => InventoryUI.Instance.IsVisible;
 	
 	public Vector3 ViewPos => Camera.main.transform.position;
 	public Vector3 ViewDir => Camera.main.transform.forward;
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
 	public readonly Dictionary<int, Item> Inventory = new();
 	public int MaxInventorySlots = 8;
 	public bool IsInventoryFull => Inventory.Count > MaxInventorySlots;
+
 
 	[Header( "Camera Noise" )]
 	public CinemachineVirtualCamera CinemachineVC;
@@ -209,7 +212,7 @@ public class Player : MonoBehaviour
 	public void OnUse( InputValue input )
 	{
 		if ( !input.isPressed ) return;
-		if ( InventoryUI.Instance.IsVisible ) return;
+		if ( InInterface ) return;
 		if ( UseEntity == null ) return;
 
 		UseEntity.Use( this );

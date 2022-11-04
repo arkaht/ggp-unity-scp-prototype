@@ -24,6 +24,13 @@ public class HandUI : MonoBehaviour
 		Player player = Player.Instance;
 		if ( player == null ) return;
 
+		//  avoid interface overlapping
+		if ( player.InInterface ) 
+		{
+			image.enabled = false;
+			return;
+		}
+
 		//  check use entity
 		UseableEntity entity = player.UseEntity;
 		if ( entity == null || !entity.CanUse( player ) )
