@@ -250,11 +250,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b5b4754a49462478f51c8aa9f4a2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OpenSound:
+  OpenSounds:
   - {fileID: 8300000, guid: 50e927c6778b70d4cb46c23db95872c2, type: 3}
   - {fileID: 8300000, guid: 774c615d5d3c1c642a87268f167558e7, type: 3}
   - {fileID: 8300000, guid: 54248dc9080d5f84a82d9737a7b2774b, type: 3}
-  CloseSound:
+  CloseSounds:
   - {fileID: 8300000, guid: 1d96fdc7c57796d4781072610978ed28, type: 3}
   - {fileID: 8300000, guid: 82419ac35c7c6554182c6b440c2e5848, type: 3}
   - {fileID: 8300000, guid: 93740c63c55853048b35cb8e235ada95, type: 3}

@@ -25,6 +25,8 @@ public class Button : UseableEntity
 		}
 
 		useCallback.Invoke();
+
+		//  play use sound
 		audio.PlayOneShot( UseSound );
 	}
 }

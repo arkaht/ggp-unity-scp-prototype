@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-	public AudioClip[] OpenSound, CloseSound;
+	public AudioClip[] OpenSounds, CloseSounds;
 
 	bool isOpen = false;
 
@@ -21,9 +21,11 @@ public class Door : MonoBehaviour
 	{
 		isOpen = is_open;
 		
+		//  play animation
 		animator.SetTrigger( is_open ? "Open" : "Close" );
 
-		audio.PlayOneShot( isOpen ? OpenSound[Random.Range( 0, OpenSound.Length )] : CloseSound[Random.Range( 0, CloseSound.Length )] );
+		//  play trigger sound
+		audio.PlayOneShot( isOpen ? OpenSounds[Random.Range( 0, OpenSounds.Length )] : CloseSounds[Random.Range( 0, CloseSounds.Length )] );
 	}
 
 	public void Toggle()

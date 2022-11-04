@@ -3,6 +3,7 @@ using UnityEngine;
 public class Item : UseableEntity
 {
 	public Sprite Sprite;
+	public AudioClip[] PickSounds;
 
 	public Player Owner { get; set; }
 	public int InventoryID { get; set; }
@@ -17,6 +18,10 @@ public class Item : UseableEntity
 
 	protected override void OnUse( Player player )
 	{
+		//  play pick up sound
+		AudioSource audio = AudioNotification.PlayAudioAt( player.transform.position, PickSounds );
+		audio.volume = 0.5f;
+
 		//  register in inventory
 		player.AddItemToInventory( this );
 
