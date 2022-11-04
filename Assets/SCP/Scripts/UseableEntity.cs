@@ -20,16 +20,15 @@ public class UseableEntity : MonoBehaviour
 		if ( other.gameObject != player.gameObject ) return;
 		if ( !CanUse( player ) ) return;
 
-		player.UseEntity = this;
+		player.AddUseable( this );
 	}
 
 	void OnTriggerExit( Collider other )
 	{
 		var player = Player.Instance;
 		if ( other.gameObject != player.gameObject ) return;
-		if ( player.UseEntity != this ) return;
 
-		player.UseEntity = null;
+		player.RemoveUseable( this );
 	}
 
     public virtual bool CanUse( Player player )

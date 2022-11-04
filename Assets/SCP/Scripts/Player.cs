@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 	public Vector3 ViewDir => Camera.main.transform.forward;
 
 	public UseableEntity UseEntity { get; set; }
+	List<UseableEntity> UseableEntitiesPool = new();
 
 	public readonly Dictionary<int, Item> Inventory = new();
 	public int MaxInventorySlots = 8;
@@ -98,6 +99,43 @@ public class Player : MonoBehaviour
 		//  smoothing noise frequency
 		cinemachineNoise.m_FrequencyGain = Mathf.Lerp( cinemachineNoise.m_FrequencyGain, noiseFrequency, Time.deltaTime * SmoothNoiseFrequencySpeed );
 	} 
+
+	public void AddUseable( UseableEntity ent )
+	{
+		if ( UseableEntitiesPool.Contains( ent ) ) return;
+
+		if ( UseEntity == null )
+		{
+			UseEntity = ent;
+		}
+		else
+		{
+			UseableEntitiesPool.Add( ent );
+		}
+	}
+
+	public void RemoveUseable( UseableEntity ent )
+	{
+		if ( UseEntity == ent )
+		{
+			UseEntity = null;
+			
+			if ( UseableEntitiesPool.Count > 0 )
+			{
+				UseEntity = UseableEntitiesPool[0];
+				UseableEntitiesPool.RemoveAt( 0 );
+            }
+        }
+		else 
+		{
+			int id = UseableEntitiesPool.IndexOf( ent );
+
+            if ( id > -1 )
+			{
+				UseableEntitiesPool.Remove( ent );
+            }
+        }
+	}
 
 	public void AddItemToInventory( Item item )
 	{

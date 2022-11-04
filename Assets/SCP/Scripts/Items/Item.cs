@@ -25,8 +25,8 @@ public class Item : UseableEntity
 		//  register in inventory
 		player.AddItemToInventory( this );
 
-		//  reset use entity
-		player.UseEntity = null;
+		//  remove from useables
+		player.RemoveUseable( this );
 	}
 
 	public void Drop()
