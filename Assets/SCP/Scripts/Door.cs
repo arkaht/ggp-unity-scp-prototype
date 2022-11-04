@@ -4,32 +4,28 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-	public AudioClip[] OpenSounds, CloseSounds;
+    public AudioClip[] OpenSounds, CloseSounds;
 
-	bool isOpen = false;
+    private bool isOpen = false;
+    private AudioSource doorAudio;
+    private Animator animator;
 
-	new AudioSource audio;
-	Animator animator;
+    private void Awake()
+    {
+        doorAudio = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+    }
 
-	void Awake()
-	{
-		audio = GetComponent<AudioSource>();
-		animator = GetComponent<Animator>(); 
-	}
+    public void SetToggle(bool is_open)
+    {
+        isOpen = is_open;
 
-	public void SetToggle( bool is_open )
-	{
-		isOpen = is_open;
-		
-		//  play animation
-		animator.SetTrigger( is_open ? "Open" : "Close" );
+        //  play animation
+        animator.SetTrigger(is_open ? "Open" : "Close");
 
-		//  play trigger sound
-		audio.PlayOneShot( isOpen ? Utils.GetRandomElement( OpenSounds ) : Utils.GetRandomElement( CloseSounds ) );
-	}
+        //  play trigger sound
+        doorAudio.PlayOneShot(isOpen ? Utils.GetRandomElement(OpenSounds) : Utils.GetRandomElement(CloseSounds));
+    }
 
-	public void Toggle()
-	{
-		SetToggle( !isOpen );
-	}
+    public void Toggle() => SetToggle(!isOpen);
 }
