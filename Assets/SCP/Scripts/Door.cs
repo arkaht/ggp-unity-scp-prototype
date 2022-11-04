@@ -25,7 +25,7 @@ public class Door : MonoBehaviour
 		animator.SetTrigger( is_open ? "Open" : "Close" );
 
 		//  play trigger sound
-		audio.PlayOneShot( isOpen ? OpenSounds[Random.Range( 0, OpenSounds.Length )] : CloseSounds[Random.Range( 0, CloseSounds.Length )] );
+		audio.PlayOneShot( isOpen ? Utils.GetRandomElement( OpenSounds ) : Utils.GetRandomElement( CloseSounds ) );
 	}
 
 	public void Toggle()
