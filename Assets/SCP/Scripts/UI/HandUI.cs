@@ -13,50 +13,34 @@ public class HandUI : MonoBehaviour
 
     private Image image;
     private Vector2 screenSize = new(Screen.width, Screen.height);
-    private Player player;
-    private UseableEntity entity;
 
     private void Awake() => image = GetComponent<Image>();
 
-    private void Start()
-    {
-        // cached fields for optimization
-        player = Player.Instance;
-        entity = player.UseEntity;
-    }
-
     private void Update()
     {
-        ChechPlayerInstance();
-
-        CheckUseEentity();
-
-        ShowImage();
-
-        ScreenWiggle();
-    }
-
-    private void ChechPlayerInstance()
-    {
+        Player player = Player.Instance;
         if (player == null) { Debug.LogError($"{typeof(HandUI)}.cs::{typeof(Player)}.cs is null reference."); return; }
-    }
 
-    private void CheckUseEentity()
-    {
+        UseableEntity entity = player.UseEntity;
         if (entity == null || !entity.CanUse(player))
         {
             image.enabled = false;
             return;
         }
+
+        ShowImage(ref entity);
+
+        ScreenWiggle(ref entity);
     }
 
-    private void ShowImage()
+
+    private void ShowImage(ref UseableEntity entity)
     {
         image.enabled = true;
         image.sprite = entity is Item ? ItemSprite : ActionSprite;
     }
 
-    private void ScreenWiggle()
+    private void ScreenWiggle(ref UseableEntity entity)
     {
         if (entity == null) { Debug.LogWarning($"{typeof(HandUI)}.cs::{nameof(entity)} is null reference."); return; }
 
