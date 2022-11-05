@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-	public bool IsSelected => Item == Player.Instance.EquipedItem;
+	public bool IsSelected => Item == Player.Instance.GetEquipedItem( Item.Type );
 	public int InventoryID { get; set; }
 
-	public Color EquipedColor;
+	public Color HandEquipedColor = Color.red, HelmetEquipedColor = Color.blue;
 	public Image OutlineImage;
 	public Image ItemImage;
 
@@ -29,9 +29,27 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IBeginDragHa
 		}
 		else
 		{
-			OutlineImage.color = Item == Player.Instance.EquipedItem ? EquipedColor : Color.white;
-
 			ItemImage.enabled = true;
+
+			//  update outline color
+			if ( IsSelected )
+			{
+				switch ( item.Type )
+				{
+					case ItemSlotType.Hand:
+						OutlineImage.color = HandEquipedColor;
+						break;
+					case ItemSlotType.Helmet:
+						OutlineImage.color = HelmetEquipedColor;
+						break;
+				}
+			}
+			else
+			{
+				OutlineImage.color = Color.white;
+			}
+
+			//  update sprite
 			ItemImage.sprite = item.Sprite;
 		}
 	}
@@ -105,23 +123,25 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IBeginDragHa
 		Player player = Player.Instance;
 		if ( IsSelected )
 		{
-			player.EquipItem( null );
+			player.UnEquipItemType( Item.Type );
 		}
 		else
-		{
-			Item previous_item = player.EquipedItem;
-			
+		{		
+			//  retrieve previous item slot
+			Item previous_item = player.GetEquipedItem( Item.Type );
+			InventorySlotUI slot = null;
+			if ( previous_item != null )
+			{
+				slot = InventoryUI.Instance.GetSlotFor( previous_item );
+			}
+
 			//  set equiped item
 			player.EquipItem( Item );
 
-			//  update previous selected slot visual
-			if ( previous_item != null )
+			//  update previous slot visual
+			if ( slot != null )
 			{
-				InventorySlotUI slot = InventoryUI.Instance.GetSlotFor( previous_item );
-				if ( slot != null )
-				{
-					slot.SetItem( previous_item );
-				}
+				slot.SetItem( previous_item );
 			}
 		}
 

@@ -11,15 +11,16 @@ public class Player : MonoBehaviour
 	public static Player Instance { get; private set; }
 
 	public bool InInterface => InventoryUI.Instance.IsVisible;
-	public bool HasGasMask => EquipedItem is GasMaskItem;
+	public bool IsGasMaskEquiped => EquipedItems[ItemSlotType.Helmet] is GasMaskItem;
 	
 	public Vector3 ViewPos => Camera.main.transform.position;
 	public Vector3 ViewDir => Camera.main.transform.forward;
 
 	public UseableEntity UseEntity { get; private set; }
-	List<UseableEntity> UseableEntitiesPool = new();
 
-	public Item EquipedItem { get; private set; }
+	readonly List<UseableEntity> UseableEntitiesPool = new();
+
+	public Dictionary<ItemSlotType, Item> EquipedItems = new();
 	public readonly Dictionary<int, Item> Inventory = new();
 	public int MaxInventorySlots = 8;
 	public bool IsInventoryFull => Inventory.Count > MaxInventorySlots;
@@ -175,9 +176,13 @@ public class Player : MonoBehaviour
 		if ( item.InventoryID == -1 ) return;
 
 		//  remove from equiped
-		if ( item == EquipedItem )
+		ItemSlotType type = item.Type;
+		if ( EquipedItems.TryGetValue( type, out Item equiped ) )
 		{
-			EquipedItem = null;
+			if ( item == equiped )
+			{
+				EquipedItems[type] = null;
+			}
 		}
 
 		//  remove from inventory
@@ -212,19 +217,42 @@ public class Player : MonoBehaviour
 
 	public void EquipItem( Item item )
 	{
-		if ( item != null && item.Owner != this ) return;
+		if ( item.Owner != this ) return;
 
-		if ( EquipedItem != null )
-		{
-			EquipedItem.OnUnEquiped();
-		}
+		ItemSlotType type = item.Type;
 
-		EquipedItem = item;
+		//  un-equip previous 
+		UnEquipItemType( type );
 
+		//  equip
+		EquipedItems[type] = item;
 		if ( item != null )
 		{
 			item.OnEquiped();
 		}
+	}
+
+	public void UnEquipItemType( ItemSlotType type )
+	{
+		//  callback previous equiped item
+		Item equiped = GetEquipedItem( type );
+		if ( equiped != null )
+		{
+			equiped.OnUnEquiped();
+		}
+
+		//  remove
+		EquipedItems.Remove( type );
+	}
+
+	public Item GetEquipedItem( ItemSlotType type )
+	{
+		if ( EquipedItems.TryGetValue( type, out Item equiped ) )
+		{
+			return equiped;
+		}
+
+		return null;
 	}
 
 	public void OnUse( InputValue input )

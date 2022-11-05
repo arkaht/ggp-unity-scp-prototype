@@ -1,7 +1,16 @@
 using UnityEngine;
 
+public enum ItemSlotType
+{
+	Hand,
+	Helmet,
+	// BODY,
+}
+
 public class Item : UseableEntity
 {
+	public ItemSlotType Type = ItemSlotType.Hand;
+
 	public Sprite Sprite;
 	public AudioClip PickSound;
 	public AudioClip DropSound;

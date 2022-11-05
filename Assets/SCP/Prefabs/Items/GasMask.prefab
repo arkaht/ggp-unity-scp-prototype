@@ -74,13 +74,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4360070764835463719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8244b01d05bd7d47b6a86ad2603b6d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 27bec31d069741b49a4a489f13f19948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UseCooldown: 1
+  Type: 1
   Sprite: {fileID: 21300000, guid: 27c579246acfeb14296016ea16444c92, type: 3}
   PickSound: {fileID: 8300000, guid: 6288afabc71477f4a81c9aa32ccb55bf, type: 3}
   DropSound: {fileID: 8300000, guid: d2cc1981b9fa700488c9bccac333d8f8, type: 3}
+  FogDensityMultiplier: 1.5
 --- !u!65 &4360070764835463724
 BoxCollider:
   m_ObjectHideFlags: 0
