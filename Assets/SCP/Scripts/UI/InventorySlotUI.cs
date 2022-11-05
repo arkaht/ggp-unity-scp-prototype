@@ -105,14 +105,14 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IBeginDragHa
 		Player player = Player.Instance;
 		if ( IsSelected )
 		{
-			player.EquipedItem = null;
+			player.EquipItem( null );
 		}
 		else
 		{
 			Item previous_item = player.EquipedItem;
 			
 			//  set equiped item
-			player.EquipedItem = Item;
+			player.EquipItem( Item );
 
 			//  update previous selected slot visual
 			if ( previous_item != null )

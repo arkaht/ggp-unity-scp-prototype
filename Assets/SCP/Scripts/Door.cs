@@ -44,7 +44,7 @@ public class Door : ActivableEntity
 		//  check keycard required
 		if ( AccessLevel > 0 )
 		{
-			var keycard = (KeycardItem) player.EquipedItem;
+			var keycard = player.EquipedItem as KeycardItem;
 			if ( keycard == null || keycard.AccessLevel < AccessLevel )
 			{
 				AudioNotification.PlayAudioAt( transform.position, RefusedSound, .5f );

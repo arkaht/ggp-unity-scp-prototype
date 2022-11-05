@@ -56,4 +56,7 @@ public class Item : UseableEntity
 		//  remove owner references
 		Owner.RemoveItemFromInventory( this );
 	}
+
+	public virtual void OnEquiped() {}
+	public virtual void OnUnEquiped() {}
 }

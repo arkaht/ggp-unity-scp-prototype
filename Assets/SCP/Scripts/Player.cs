@@ -11,14 +11,15 @@ public class Player : MonoBehaviour
 	public static Player Instance { get; private set; }
 
 	public bool InInterface => InventoryUI.Instance.IsVisible;
+	public bool HasGasMask => EquipedItem is GasMaskItem;
 	
 	public Vector3 ViewPos => Camera.main.transform.position;
 	public Vector3 ViewDir => Camera.main.transform.forward;
 
-	public UseableEntity UseEntity { get; set; }
+	public UseableEntity UseEntity { get; private set; }
 	List<UseableEntity> UseableEntitiesPool = new();
 
-	public Item EquipedItem { get; set; }
+	public Item EquipedItem { get; private set; }
 	public readonly Dictionary<int, Item> Inventory = new();
 	public int MaxInventorySlots = 8;
 	public bool IsInventoryFull => Inventory.Count > MaxInventorySlots;
@@ -207,6 +208,23 @@ public class Player : MonoBehaviour
 
 		//  update ID
 		Inventory[target_id].InventoryID = target_id;
+	}
+
+	public void EquipItem( Item item )
+	{
+		if ( item != null && item.Owner != this ) return;
+
+		if ( EquipedItem != null )
+		{
+			EquipedItem.OnUnEquiped();
+		}
+
+		EquipedItem = item;
+
+		if ( item != null )
+		{
+			item.OnEquiped();
+		}
 	}
 
 	public void OnUse( InputValue input )
