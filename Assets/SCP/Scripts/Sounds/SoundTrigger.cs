@@ -34,4 +34,15 @@ public class SoundTrigger : MonoBehaviour
 			transform.position += new Vector3( Mathf.Cos( angle ) * PositionRange.x, Mathf.Sin( angle ) * PositionRange.y, Mathf.Tan( angle ) * PositionRange.z );
 		}
 	}
+
+	void OnDrawGizmos()
+	{
+		if ( collider == null )
+		{
+			Awake();
+		}
+
+		Gizmos.color = new( 0.0f, 1.0f, 1.0f, .25f );
+		Gizmos.DrawCube( collider.bounds.center, collider.bounds.size );
+	}
 }
