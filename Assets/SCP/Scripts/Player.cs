@@ -11,7 +11,11 @@ public class Player : MonoBehaviour
 	public static Player Instance { get; private set; }
 
 	public bool InInterface => InventoryUI.Instance.IsVisible;
-	public bool IsGasMaskEquiped => EquipedItems[ItemSlotType.Helmet] is GasMaskItem;
+
+	public bool IsGasMaskEquiped => GetEquipedItem( ItemSlotType.Helmet ) is GasMaskItem;
+	public bool InGas { get; set; }
+	public float InGasTime { get; private set; }
+	public float InGasSurviveTime = 2.0f;
 	
 	public Vector3 ViewPos => Camera.main.transform.position;
 	public Vector3 ViewDir => Camera.main.transform.forward;
@@ -38,6 +42,7 @@ public class Player : MonoBehaviour
 	[Header( "Sounds" )]
 	public FootstepPlayer WalkFoostepPlayer;
 	public FootstepPlayer RunFoostepPlayer;
+	public FootstepPlayer CoughPlayer;
 
 	[Header( "Misc" )]
 	public float DropItemDistance = 2.0f;
@@ -100,6 +105,26 @@ public class Player : MonoBehaviour
 		else
 		{
 			OnIdleUpdate();
+		}
+
+		//  in gas
+		if ( InGas )
+		{
+			if ( InGasTime < InGasSurviveTime )
+			{
+				if ( ( InGasTime += Time.deltaTime ) >= InGasSurviveTime )
+				{
+					print( "dead" );
+				}
+
+				CoughPlayer.enabled = true;
+			}
+		}
+		else if ( InGasTime > 0.0f )
+		{
+			InGasTime = Mathf.Max( 0, InGasTime - Time.deltaTime );
+
+			CoughPlayer.enabled = false;
 		}
 
 		//  smoothing noise frequency

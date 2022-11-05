@@ -2,23 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundTrigger : MonoBehaviour
+public class SoundTrigger : Trigger
 {
 	public AudioClip[] Sounds;
 	public bool SingleUse = true;
 	public Vector3 PositionRange;
 
 	new AudioSource audio;
-	new Collider collider;
 
-	void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
+
 		audio = GetComponent<AudioSource>();
-		collider = GetComponent<Collider>();
+	
+		color = Color.cyan;	
 	}
 
 	void OnTriggerEnter( Collider other )
 	{
+		if ( other.gameObject != Player.Instance.gameObject ) return;
+
+		//  play sound
 		audio.PlayOneShot( Utils.GetRandomElement( Sounds ) );
 
 		//  disable on single use
@@ -33,16 +38,5 @@ public class SoundTrigger : MonoBehaviour
 			float angle = Mathf.Deg2Rad * Random.Range( 0.0f, 360.0f );
 			transform.position += new Vector3( Mathf.Cos( angle ) * PositionRange.x, Mathf.Sin( angle ) * PositionRange.y, Mathf.Tan( angle ) * PositionRange.z );
 		}
-	}
-
-	void OnDrawGizmos()
-	{
-		if ( collider == null )
-		{
-			Awake();
-		}
-
-		Gizmos.color = new( 0.0f, 1.0f, 1.0f, .25f );
-		Gizmos.DrawCube( collider.bounds.center, collider.bounds.size );
 	}
 }
