@@ -14,8 +14,10 @@ public class Player : MonoBehaviour
 
 	public bool IsGasMaskEquiped => GetEquipedItem( ItemSlotType.Helmet ) is GasMaskItem;
 	public bool InGas { get; set; }
-	public float InGasTime { get; private set; }
-	public float InGasSurviveTime = 2.0f;
+
+	public bool IsAlive => Health > 0;
+	public int Health = 100;
+	public int MaxHealth { get; private set; }
 	
 	public Vector3 ViewPos => Camera.main.transform.position;
 	public Vector3 ViewDir => Camera.main.transform.forward;
@@ -56,6 +58,11 @@ public class Player : MonoBehaviour
 
 		inputs = GetComponent<StarterAssets.StarterAssetsInputs>();
 		cinemachineNoise = CinemachineVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+	}
+
+	void Start()
+	{
+		MaxHealth = Health;
 	}
 
 	void OnWalkUpdate()
@@ -108,28 +115,23 @@ public class Player : MonoBehaviour
 		}
 
 		//  in gas
-		if ( InGas )
-		{
-			if ( InGasTime < InGasSurviveTime )
-			{
-				if ( ( InGasTime += Time.deltaTime ) >= InGasSurviveTime )
-				{
-					print( "dead" );
-				}
-
-				CoughPlayer.enabled = true;
-			}
-		}
-		else if ( InGasTime > 0.0f )
-		{
-			InGasTime = Mathf.Max( 0, InGasTime - Time.deltaTime );
-
-			CoughPlayer.enabled = false;
-		}
-
+		CoughPlayer.enabled = InGas;
+		
 		//  smoothing noise frequency
 		cinemachineNoise.m_FrequencyGain = Mathf.Lerp( cinemachineNoise.m_FrequencyGain, noiseFrequency, Time.deltaTime * SmoothNoiseFrequencySpeed );
 	} 
+
+	public void TakeDamage( int damage )
+	{
+		if ( !IsAlive ) return;
+
+		Health -= damage;
+
+		if ( !IsAlive )
+		{
+			print( "dead" );
+		}
+	}
 
 	public void AddUseable( UseableEntity ent )
 	{

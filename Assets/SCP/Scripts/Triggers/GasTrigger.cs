@@ -2,6 +2,11 @@
 
 public class GasTrigger : Trigger
 {
+	public int HurtDamage = 10;
+	public float HurtCooldown = 0.1f;
+
+	float hurtCooldown = 0.0f;
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -13,8 +18,15 @@ public class GasTrigger : Trigger
 	{
 		Player player = Player.Instance;
 		if ( other.gameObject != player.gameObject ) return;
+		if ( player.IsGasMaskEquiped ) return;
 
-		player.InGas = !player.IsGasMaskEquiped;
+		if ( ( hurtCooldown -= Time.deltaTime ) <= 0.0f )
+		{
+			player.TakeDamage( HurtDamage );
+			hurtCooldown = HurtCooldown;
+		}
+
+		player.InGas = true;
 	}
 
 	void OnTriggerExit( Collider other )
