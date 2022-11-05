@@ -21332,6 +21332,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3130390653726965328, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
+      propertyPath: Priority
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130390653726965328, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3130390653726965340, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
       propertyPath: m_Name
       value: GasParticles (2)
@@ -23797,6 +23805,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3130390653726965328, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
+      propertyPath: Priority
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130390653726965328, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3130390653726965340, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
       propertyPath: m_Name
       value: GasParticles
@@ -25986,6 +26002,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1760259991328554626, guid: 79d564b11190428429d5267625f9847a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -650
+      objectReference: {fileID: 0}
     - target: {fileID: 7723505836906209869, guid: 79d564b11190428429d5267625f9847a, type: 3}
       propertyPath: m_Name
       value: KeycardLVL4
@@ -30592,6 +30612,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3130390653726965328, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
+      propertyPath: Priority
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130390653726965328, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3130390653726965340, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
       propertyPath: m_Name
       value: GasParticles (4)
@@ -69808,6 +69836,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3130390653726965328, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
+      propertyPath: Priority
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130390653726965328, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3130390653726965340, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
       propertyPath: m_Name
       value: GasParticles (1)
@@ -71975,15 +72011,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4360070764835463722, guid: 1cf63970771a2df4997ef099938b7e55, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.693
+      value: -23.083
       objectReference: {fileID: 0}
     - target: {fileID: 4360070764835463722, guid: 1cf63970771a2df4997ef099938b7e55, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.158
+      value: 0.996
       objectReference: {fileID: 0}
     - target: {fileID: 4360070764835463722, guid: 1cf63970771a2df4997ef099938b7e55, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35.585
+      value: 34.792
       objectReference: {fileID: 0}
     - target: {fileID: 4360070764835463722, guid: 1cf63970771a2df4997ef099938b7e55, type: 3}
       propertyPath: m_LocalRotation.w
@@ -75535,6 +75571,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3130390653726965328, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
+      propertyPath: Priority
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130390653726965328, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3130390653726965340, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
       propertyPath: m_Name
       value: GasParticles (3)
@@ -97369,6 +97413,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3130390653726965328, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
+      propertyPath: Priority
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130390653726965328, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3130390653726965340, guid: e2e8a6ddbecfb834abaa0e7f51f17639, type: 3}
       propertyPath: m_Name
       value: GasParticles (5)
@@ -100193,10 +100245,18 @@ PrefabInstance:
       propertyPath: CinemachineVC
       value: 
       objectReference: {fileID: 1355333559}
+    - target: {fileID: 136751850673856526, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: MaxInventorySlots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5393215578589016655, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6b911390c5825014e8377183a7837d3f, type: 2}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: SprintSpeed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
       value: PlayerCapsule
