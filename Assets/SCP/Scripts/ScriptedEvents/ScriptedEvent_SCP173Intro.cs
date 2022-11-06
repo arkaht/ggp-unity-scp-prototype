@@ -11,6 +11,7 @@ public class ScriptedEvent_SCP173Intro : ActivableEntity
 	[Header( "Sounds" )]
 	public AudioClip SCP173SpawnSound;
 	public AudioClip[] LightOffSounds;
+	public AudioClip LightOnSound;
 
 	new AudioSource audio;
 
@@ -47,6 +48,8 @@ public class ScriptedEvent_SCP173Intro : ActivableEntity
 
 		//  wait some time
 		yield return new WaitForSeconds( BlackoutTime );
+
+		AudioNotification.PlayAudioAt( Vector3.zero, LightOnSound, 0.75f );
 
 		//  enable & warp 173
 		scp173.enabled = true;

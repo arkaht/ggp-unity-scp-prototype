@@ -57,6 +57,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8433af44b72fafe4497d5d02b5a2b179, type: 3}
   - {fileID: 8300000, guid: ab7483353354ed44fab12f445c9d5ae8, type: 3}
   - {fileID: 8300000, guid: 9d52650a21509a84080960ed1de22b60, type: 3}
+  LightOnSound: {fileID: 8300000, guid: fbf39166093290144b677e86b2471489, type: 3}
 --- !u!65 &5773252030294181648
 BoxCollider:
   m_ObjectHideFlags: 0
