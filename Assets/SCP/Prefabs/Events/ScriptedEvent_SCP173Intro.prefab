@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5773252030294181648}
   - component: {fileID: 5773252030294181649}
   - component: {fileID: 5773252030294181663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ScriptedEvent_SCP173Intro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
