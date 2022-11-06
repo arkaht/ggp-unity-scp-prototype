@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryUI : MonoBehaviour
+public class InventoryUI : PanelUI
 {
 	public static InventoryUI Instance { get; private set; }
 
-	public bool IsVisible => gameObject.activeSelf;
 
 	public GameObject SlotPrefab;
-
 	public Vector2 SlotPadding = new( 300.0f, 500.0f );
 
 	public readonly List<InventorySlotUI> Slots = new();
@@ -58,10 +56,8 @@ public class InventoryUI : MonoBehaviour
 		Hide();
 	}
 
-	public void Show()
+	void OnEnable()
 	{
-		gameObject.SetActive( true );
-
 		//  update items in slots
 		Player player = Player.Instance;
 
@@ -72,23 +68,6 @@ public class InventoryUI : MonoBehaviour
 
 			slot.SetItem( item );
 		}
-
-		Player.SetCursorLocked( false );
-	}
-
-	public void Hide()
-	{
-		gameObject.SetActive( false );
-
-		Player.SetCursorLocked( true );
-	}
-
-	public void Toggle()
-	{
-		if ( IsVisible )
-			Hide();
-		else
-			Show();
 	}
 
 	public InventorySlotUI GetSlotFor( Item item )

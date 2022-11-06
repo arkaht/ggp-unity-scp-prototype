@@ -19,7 +19,8 @@ public class GasTrigger : Trigger
 		Player player = Player.Instance;
 		if ( other.gameObject != player.gameObject ) return;
 
-		if ( player.IsGasMaskEquiped ) {
+		if ( player.IsGasMaskEquiped ) 
+		{
 			player.InGas = false;
 			return;
 		}
