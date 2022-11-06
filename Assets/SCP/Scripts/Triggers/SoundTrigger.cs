@@ -5,7 +5,6 @@ using UnityEngine;
 public class SoundTrigger : Trigger
 {
 	public AudioClip[] Sounds;
-	public bool SingleUse = true;
 	public Vector3 PositionRange;
 
 	new AudioSource audio;
@@ -19,18 +18,10 @@ public class SoundTrigger : Trigger
 		color = Color.cyan;	
 	}
 
-	void OnTriggerEnter( Collider other )
+	protected override void OnTrigger( Collider other )
 	{
-		if ( other.gameObject != Player.Instance.gameObject ) return;
-
 		//  play sound
 		audio.PlayOneShot( Utils.GetRandomElement( Sounds ) );
-
-		//  disable on single use
-		if ( SingleUse )
-		{
-			collider.enabled = false;
-		}
 
 		//  translate play position
 		if ( PositionRange != Vector3.zero )

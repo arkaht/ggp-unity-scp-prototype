@@ -13,6 +13,12 @@ public class AudioNotification : MonoBehaviour
 		AudioSource audio = obj.AddComponent<AudioSource>();
 		audio.clip = sound;
 		audio.volume = volume;
+		
+		//  spatialize
+		if ( pos != Vector3.zero )
+		{
+			audio.spatialBlend = 1.0f;
+		}
 
 		//  add audio notification
 		return obj.AddComponent<AudioNotification>();

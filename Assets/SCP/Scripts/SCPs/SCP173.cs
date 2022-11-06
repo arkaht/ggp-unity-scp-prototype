@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class SCP173 : MonoBehaviour
 {
+	public static SCP173 Instance { get; private set; }
+
 	public Door ActiveDoor { get; set; }
 
 	public Vector3[] DetectionPositions;
@@ -31,6 +33,8 @@ public class SCP173 : MonoBehaviour
 
 	void Awake()
 	{
+		Instance = this;
+
 		audio = GetComponent<AudioSource>();
 		agent = GetComponent<NavMeshAgent>();
 	}

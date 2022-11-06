@@ -45,7 +45,7 @@ public class Door : ActivableEntity
 		SetToggle( !isOpen );
 	}
 
-	public override bool Activate( Player player, UseableEntity caller )
+	public override bool Activate( Player player, MonoBehaviour caller )
 	{
 		//  check keycard required
 		if ( AccessLevel > 0 )
