@@ -129,10 +129,15 @@ public class Player : MonoBehaviour
 
 		if ( !IsAlive )
 		{
+			//  show death menu
 			MenuUI menu = MenuUI.Instance;
 			menu.SetTitle( "YOU DIED" );
 			menu.SetMessage( "Subject: D-9341.\n\nCause of death:\n" + death_message );
 			menu.Show();
+
+			//  reset vars
+			inputs.move = Vector2.zero;
+			inputs.look = Vector2.zero;
 
 			print( "dead" );
 		}
@@ -336,7 +341,7 @@ public class Player : MonoBehaviour
 	{
 		if ( !IsAlive ) return;
 
-		inputs.MoveInput( value.Get<Vector2>() );
+		inputs.move = value.Get<Vector2>();
 	}
 
 	public void OnLook( InputValue value )
@@ -344,18 +349,20 @@ public class Player : MonoBehaviour
 		if ( Cursor.lockState == CursorLockMode.None ) return;
 		if ( !IsAlive ) return;
 
-		inputs.LookInput(value.Get<Vector2>());
+		inputs.look = value.Get<Vector2>();
 	}
 
 	public void OnSprint( InputValue value )
 	{
 		if ( !IsAlive ) return;
 
-		inputs.SprintInput( value.isPressed );
+		inputs.sprint = value.isPressed;
 	}
 
 	void OnApplicationFocus( bool hasFocus )
 	{
+		if ( InInterface ) return;
+
 		SetCursorLocked( hasFocus );
 	}
 
