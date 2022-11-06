@@ -16458,36 +16458,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8361274742019927477, guid: 806b278b9c36d594ba3c61e6dd77437b, type: 3}
-      propertyPath: m_Text
-      value: 'Subject: D-9341
-
-
-        Cause of death:
-
-        Suffocation due
-        to inhalation of a large quantity of nitrogen dioxide
-
-
-        a
-
-        a
-
-        a
-
-
-        a
-
-        a
-
-        a
-
-        a
-
-        a
-
-'
-      objectReference: {fileID: 0}
     - target: {fileID: 8579651827542166275, guid: 806b278b9c36d594ba3c61e6dd77437b, type: 3}
       propertyPath: m_Pivot.x
       value: 0

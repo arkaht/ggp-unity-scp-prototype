@@ -53,6 +53,7 @@ public class Door : ActivableEntity
 			var keycard = player.GetEquipedItem( ItemSlotType.Hand ) as KeycardItem;
 			if ( keycard == null || keycard.AccessLevel < AccessLevel )
 			{
+				MessageUI.Instance.ShowText( "This door needs a level " + AccessLevel + " access.." );
 				AudioNotification.PlayAudioAt( transform.position, RefusedSound, .5f );
 				return false;
 			}
