@@ -129,6 +129,11 @@ public class Player : MonoBehaviour
 
 		if ( !IsAlive )
 		{
+			MenuUI menu = MenuUI.Instance;
+			menu.SetTitle( "YOU DIED" );
+			menu.SetMessage( "lol you're dead" );
+			menu.Show();
+
 			print( "dead" );
 		}
 	}
@@ -314,8 +319,7 @@ public class Player : MonoBehaviour
 	public void OnUse( InputValue input )
 	{
 		if ( !input.isPressed ) return;
-		if ( InInterface ) return;
-		if ( UseEntity == null ) return;
+		if ( !IsAlive || InInterface || UseEntity == null ) return;
 
 		UseEntity.Use( this );
 	}
@@ -323,11 +327,31 @@ public class Player : MonoBehaviour
 	public void OnInventory( InputValue input )
 	{
 		if ( !input.isPressed ) return;
-
-		//  reset look
-		inputs.look = Vector2.zero;
+		if ( !IsAlive ) return;
 
 		InventoryUI.Instance.Toggle();
+	}
+
+	public void OnMove( InputValue value )
+	{
+		if ( !IsAlive ) return;
+
+		inputs.MoveInput( value.Get<Vector2>() );
+	}
+
+	public void OnLook( InputValue value )
+	{
+		if ( Cursor.lockState == CursorLockMode.None ) return;
+		if ( !IsAlive ) return;
+
+		inputs.LookInput(value.Get<Vector2>());
+	}
+
+	public void OnSprint( InputValue value )
+	{
+		if ( !IsAlive ) return;
+
+		inputs.SprintInput( value.isPressed );
 	}
 
 	void OnApplicationFocus( bool hasFocus )
@@ -337,6 +361,12 @@ public class Player : MonoBehaviour
 
 	public static void SetCursorLocked( bool is_locked )
 	{
+		//  reset look
+		if ( Instance != null )
+		{
+			Instance.inputs.look = Vector2.zero;
+		}
+
 		Cursor.lockState = is_locked ? CursorLockMode.Locked : CursorLockMode.None;
 	}
 }
