@@ -54,6 +54,7 @@ public class ScriptedEvent_SCP173Intro : ActivableEntity
 		//  enable & warp 173
 		scp173.enabled = true;
 		scp173.transform.position = SCP173Spawn.transform.position;
+		scp173.transform.rotation = SCP173Spawn.transform.rotation;
 
 		//  play spawn sound
 		var notif = AudioNotification.PlayAudioAt( scp173.transform.position, SCP173SpawnSound );
