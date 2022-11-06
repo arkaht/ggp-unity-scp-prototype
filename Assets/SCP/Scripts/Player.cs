@@ -303,6 +303,10 @@ public class Player : MonoBehaviour
 				return false;
 			}
 		}
+		else if ( ( transform.position - pos ).sqrMagnitude > max_dist * max_dist )
+		{
+			return false;
+		}
 
 		return true;
 	}
