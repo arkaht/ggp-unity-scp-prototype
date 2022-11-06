@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2498312367614413177}
   - component: {fileID: 6075994871531214575}
   - component: {fileID: 4192643225696600177}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: AmbientPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6248762848963873595}
   - component: {fileID: 1760993258632808495}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: MusicPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4135013735270702856}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerCameraRoot
   m_TagString: CinemachineTarget
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 5393215578589016654}
   - component: {fileID: 5393215578589016655}
   - component: {fileID: 5393215578589016640}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 7529020134543479646}
   - component: {fileID: 7203836985059990963}
   - component: {fileID: 665034137770049500}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: CoughPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 5420857361349278248}
   - component: {fileID: 8616685848737228376}
   - component: {fileID: 136751850673856526}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: PlayerCapsule
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -795,7 +795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a4f1fe5a11c6945afd3bf3bbd59565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InGasSurviveTime: 2
+  Health: 100
   MaxInventorySlots: 10
   CinemachineVC: {fileID: 0}
   DefaultCameraNoiseFrequency: 0.3
@@ -868,6 +868,10 @@ PrefabInstance:
     - target: {fileID: 8377374125900988211, guid: 9eb19d7d9a5d5a94799d0d13ed40829c, type: 3}
       propertyPath: m_Name
       value: WalkFootstepPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377374125900988211, guid: 9eb19d7d9a5d5a94799d0d13ed40829c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eb19d7d9a5d5a94799d0d13ed40829c, type: 3}
@@ -985,6 +989,10 @@ PrefabInstance:
     - target: {fileID: 8377374125900988211, guid: 9eb19d7d9a5d5a94799d0d13ed40829c, type: 3}
       propertyPath: m_Name
       value: RunFootstepPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377374125900988211, guid: 9eb19d7d9a5d5a94799d0d13ed40829c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eb19d7d9a5d5a94799d0d13ed40829c, type: 3}

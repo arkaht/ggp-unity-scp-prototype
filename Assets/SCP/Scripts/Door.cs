@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Door : ActivableEntity
 {
+	public bool IsOpen => isOpen;
+	public AudioSource Audio => audio;
+
 	[Header( "Access Level" )]
 	public int AccessLevel = 0;
 	public AudioClip AuthorizedSound, RefusedSound;
@@ -14,11 +18,13 @@ public class Door : ActivableEntity
 
 	bool isOpen = false;
 
+	NavMeshObstacle obstacle;
 	new AudioSource audio;
 	Animator animator;
 
 	void Awake()
 	{
+		obstacle = GetComponent<NavMeshObstacle>();
 		audio = GetComponent<AudioSource>();
 		animator = GetComponent<Animator>(); 
 	}
@@ -56,5 +62,26 @@ public class Door : ActivableEntity
 
 		Toggle();
 		return true;
+	}
+
+	
+	//  animator events binding
+	public void TurnAIObstacleOff() => obstacle.enabled = false;
+	public void TurnAIObstacleOn() => obstacle.enabled = true;
+
+	void OnTriggerEnter( Collider other )
+	{
+		if ( other.TryGetComponent( out SCP173 scp173 ) )
+		{
+			scp173.ActiveDoor = this;
+		}
+	}
+
+	void OnTriggerExit( Collider other )
+	{
+		if ( other.TryGetComponent( out SCP173 scp173 ) )
+		{
+			scp173.ActiveDoor = null;
+		}
 	}
 }

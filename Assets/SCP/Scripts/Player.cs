@@ -282,6 +282,31 @@ public class Player : MonoBehaviour
 		return null;
 	}
 
+	public bool IsPosVisible( Vector3 pos, float max_dist, bool use_raycast = true )
+	{
+		//  check viewport
+		Vector3 viewport_pos = Camera.main.WorldToViewportPoint( pos );
+		if ( viewport_pos.z <= 0.0f 
+		  || viewport_pos.x <= 0.0f || viewport_pos.x >= 1.0f 
+		  || viewport_pos.y <= 0.0f || viewport_pos.y >= 1.0f )
+			return false;
+
+		//  check direct visibility 
+		if ( use_raycast )
+		{
+			if ( Physics.Raycast( pos, Camera.main.transform.position - pos, out RaycastHit hit, max_dist ) )
+			{
+				return hit.transform.parent == transform;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	public void OnUse( InputValue input )
 	{
 		if ( !input.isPressed ) return;
