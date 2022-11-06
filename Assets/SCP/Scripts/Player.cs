@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
 	public bool IsGasMaskEquiped => GetEquipedItem( ItemSlotType.Helmet ) is GasMaskItem;
 	public bool InGas { get; set; }
+	public bool CanMove { get; set; }
 
 	public bool IsAlive => Health > 0;
 	public int Health = 100;
@@ -63,6 +64,8 @@ public class Player : MonoBehaviour
 	void Start()
 	{
 		MaxHealth = Health;
+
+		CanMove = true;
 	}
 
 	void OnWalkUpdate()
@@ -132,12 +135,10 @@ public class Player : MonoBehaviour
 			//  show death menu
 			MenuUI menu = MenuUI.Instance;
 			menu.SetTitle( "YOU DIED" );
-			menu.SetMessage( "Subject: D-9341.\n\nCause of death:\n" + death_message );
+			menu.SetMessage( "Subject: D-9341.\n\nStatus:\nDead. " + death_message );
 			menu.Show();
 
-			//  reset vars
-			inputs.move = Vector2.zero;
-			inputs.look = Vector2.zero;
+			StopMovement();
 
 			print( "dead" );
 		}
@@ -321,6 +322,15 @@ public class Player : MonoBehaviour
 		return true;
 	}
 
+	public void StopMovement()
+	{
+		CanMove = false;
+
+		//  reset vars
+		inputs.move = Vector2.zero;
+		inputs.look = Vector2.zero;
+	}
+
 	public void OnUse( InputValue input )
 	{
 		if ( !input.isPressed ) return;
@@ -332,14 +342,14 @@ public class Player : MonoBehaviour
 	public void OnInventory( InputValue input )
 	{
 		if ( !input.isPressed ) return;
-		if ( !IsAlive ) return;
+		if ( !IsAlive || !CanMove ) return;
 
 		InventoryUI.Instance.Toggle();
 	}
 
 	public void OnMove( InputValue value )
 	{
-		if ( !IsAlive ) return;
+		if ( !CanMove ) return;
 
 		inputs.move = value.Get<Vector2>();
 	}
@@ -347,7 +357,7 @@ public class Player : MonoBehaviour
 	public void OnLook( InputValue value )
 	{
 		if ( Cursor.lockState == CursorLockMode.None ) return;
-		if ( !IsAlive ) return;
+		if ( !CanMove ) return;
 
 		inputs.look = value.Get<Vector2>();
 	}

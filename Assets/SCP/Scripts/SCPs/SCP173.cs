@@ -17,6 +17,7 @@ public class SCP173 : MonoBehaviour
 	public float SeeDistance = 10.0f;
 	public float WaitingDoorTime = 2.0f;
 
+	[TextArea( 3, 10 )]
 	public string DeathMessage;
 
 	[Header( "Sounds" )]

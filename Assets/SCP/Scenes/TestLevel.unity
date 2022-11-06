@@ -719,11 +719,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7555025574328162103, guid: a29104b81c6e016409b879a0ee6ca622, type: 3}
   m_PrefabInstance: {fileID: 77194875}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &104455112 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7555025574328162102, guid: a29104b81c6e016409b879a0ee6ca622, type: 3}
-  m_PrefabInstance: {fileID: 7555025574588604778}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &116656963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,19 +1293,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7555025574328162103, guid: a29104b81c6e016409b879a0ee6ca622, type: 3}
   m_PrefabInstance: {fileID: 7555025574588604778}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &277493347
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104455112}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2.5, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &315032040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8140327730636291276, guid: d6dbcd7331eaa424d8aa9ef7659459dd, type: 3}
@@ -16286,6 +16268,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79d564b11190428429d5267625f9847a, type: 3}
+--- !u!1001 &4633772387959546331
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4633772387421565650, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633772387421565650, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.1363
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633772387421565650, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.403491
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633772387421565650, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.75955
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633772387421565650, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633772387421565650, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633772387421565650, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633772387421565650, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633772387421565650, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633772387421565650, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633772387421565650, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633772387421565661, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
+      propertyPath: m_Name
+      value: EndingTrigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e5c7cb5fa765cf4a85c78adf471162c, type: 3}
 --- !u!1001 &5201013598825150644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16418,6 +16457,36 @@ PrefabInstance:
     - target: {fileID: 8141810566115628079, guid: 806b278b9c36d594ba3c61e6dd77437b, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361274742019927477, guid: 806b278b9c36d594ba3c61e6dd77437b, type: 3}
+      propertyPath: m_Text
+      value: 'Subject: D-9341
+
+
+        Cause of death:
+
+        Suffocation due
+        to inhalation of a large quantity of nitrogen dioxide
+
+
+        a
+
+        a
+
+        a
+
+
+        a
+
+        a
+
+        a
+
+        a
+
+        a
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 8579651827542166275, guid: 806b278b9c36d594ba3c61e6dd77437b, type: 3}
       propertyPath: m_Pivot.x

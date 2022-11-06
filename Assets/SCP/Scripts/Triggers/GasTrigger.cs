@@ -5,6 +5,7 @@ public class GasTrigger : Trigger
 	public int HurtDamage = 10;
 	public float HurtCooldown = 0.1f;
 
+	[TextArea( 3, 10 )]
 	public string DeathMessage;
 
 	float hurtCooldown = 0.0f;
