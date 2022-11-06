@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
 		cinemachineNoise.m_FrequencyGain = Mathf.Lerp( cinemachineNoise.m_FrequencyGain, noiseFrequency, Time.deltaTime * SmoothNoiseFrequencySpeed );
 	} 
 
-	public void TakeDamage( int damage )
+	public void TakeDamage( int damage, string death_message )
 	{
 		if ( !IsAlive ) return;
 
@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
 		{
 			MenuUI menu = MenuUI.Instance;
 			menu.SetTitle( "YOU DIED" );
-			menu.SetMessage( "lol you're dead" );
+			menu.SetMessage( "Subject: D-9341.\n\nCause of death:\n" + death_message );
 			menu.Show();
 
 			print( "dead" );

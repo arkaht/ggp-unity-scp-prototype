@@ -5,6 +5,8 @@ public class GasTrigger : Trigger
 	public int HurtDamage = 10;
 	public float HurtCooldown = 0.1f;
 
+	public string DeathMessage;
+
 	float hurtCooldown = 0.0f;
 
 	protected override void Awake()
@@ -27,7 +29,7 @@ public class GasTrigger : Trigger
 
 		if ( ( hurtCooldown -= Time.deltaTime ) <= 0.0f )
 		{
-			player.TakeDamage( HurtDamage );
+			player.TakeDamage( HurtDamage, DeathMessage );
 			hurtCooldown = HurtCooldown;
 		}
 

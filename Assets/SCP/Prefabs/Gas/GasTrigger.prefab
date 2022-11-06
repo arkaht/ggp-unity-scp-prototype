@@ -62,3 +62,4 @@ MonoBehaviour:
   IsPlayerOnly: 1
   HurtDamage: 10
   HurtCooldown: 0.3
+  DeathMessage: Suffocation due to inhalation of a large quantity of nitrogen dioxide.

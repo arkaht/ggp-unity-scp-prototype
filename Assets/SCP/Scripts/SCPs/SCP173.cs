@@ -17,6 +17,8 @@ public class SCP173 : MonoBehaviour
 	public float SeeDistance = 10.0f;
 	public float WaitingDoorTime = 2.0f;
 
+	public string DeathMessage;
+
 	[Header( "Sounds" )]
 	public AudioClip OpenDoorSound;
 	public AudioClip[] KillSounds;
@@ -119,7 +121,7 @@ public class SCP173 : MonoBehaviour
 				if ( player_distance_sqr <= KillDistance * KillDistance )
 				{
 					//  kill player
-					player.TakeDamage( player.Health );
+					player.TakeDamage( player.Health, DeathMessage );
 
 					//  play kill sound
 					AudioNotification.PlayAudioAt( Vector3.zero, KillSounds, 0.75f );

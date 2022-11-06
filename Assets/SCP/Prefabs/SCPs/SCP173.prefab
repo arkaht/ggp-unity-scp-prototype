@@ -70,6 +70,7 @@ MonoBehaviour:
   KillDistance: 1
   SeeDistance: 15
   WaitingDoorTime: 4
+  DeathMessage: Neck destroyed.
   OpenDoorSound: {fileID: 8300000, guid: 6df52496c9f3fa748a48ef6bd937fadb, type: 3}
   KillSounds:
   - {fileID: 8300000, guid: 2ddef1b9452a5de4aa4d1bad51850264, type: 3}
