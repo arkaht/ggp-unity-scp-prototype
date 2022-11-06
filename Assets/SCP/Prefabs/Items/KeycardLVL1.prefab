@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6259673763831890746}
   - component: {fileID: 1191718871628871443}
   - component: {fileID: 1591727870514321812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KeycardLVL1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UseCooldown: 1
+  Type: 0
   Sprite: {fileID: 21300000, guid: 954eec332fe8ff248add1fc6f7be1818, type: 3}
   PickSound: {fileID: 8300000, guid: 6288afabc71477f4a81c9aa32ccb55bf, type: 3}
   DropSound: {fileID: 8300000, guid: d2cc1981b9fa700488c9bccac333d8f8, type: 3}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3406584615539606058}
   - component: {fileID: 8820451111511662422}
   - component: {fileID: 1247863742458353777}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 248760584150224366}
   - component: {fileID: 1799510912805186665}
   - component: {fileID: 1799510912805186670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,9 @@ GameObject:
   - component: {fileID: 7555025574328162100}
   - component: {fileID: 7555025574328162101}
   - component: {fileID: 8902899086672296612}
-  m_Layer: 0
+  - component: {fileID: 2655990428830860469}
+  - component: {fileID: 8437111915871370286}
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,6 +359,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &2655990428830860469
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555025574328162102}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.75, y: 1.25, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!54 &8437111915871370286
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555025574328162102}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &7555025573747058409
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5246866366388930003}
   - component: {fileID: 5246866366388930001}
   - component: {fileID: 5246866366388930002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GasTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
