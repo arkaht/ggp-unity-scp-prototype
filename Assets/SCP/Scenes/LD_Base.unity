@@ -5186,13 +5186,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160303107}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2.971, y: 2.865, z: 4.374}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 62.324474, y: 11.754211, z: 13.057484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 604313091}
+  m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &171171461
 PrefabInstance:
@@ -27050,6 +27050,7 @@ Transform:
   - {fileID: 2422848376578321011}
   - {fileID: 940585477}
   - {fileID: 1478509539}
+  - {fileID: 160303109}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32645,6 +32646,18 @@ PrefabInstance:
     - target: {fileID: 5773252030294181652, guid: 0f97357f367d8e54882554795ead383b, type: 3}
       propertyPath: m_Name
       value: ScriptedEvent_SCP173Intro
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773252030883106292, guid: 0f97357f367d8e54882554795ead383b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.6371
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773252030883106292, guid: 0f97357f367d8e54882554795ead383b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.043
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773252030883106292, guid: 0f97357f367d8e54882554795ead383b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f97357f367d8e54882554795ead383b, type: 3}
