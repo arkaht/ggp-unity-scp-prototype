@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class DamageUI : MonoBehaviour
 {
+	public float SmoothSpeed = 5.0f;
+
 	Image image;
 
 	void Awake()
@@ -15,6 +17,9 @@ public class DamageUI : MonoBehaviour
     void Update()
 	{
 		Player player = Player.Instance;
-		image.color = new( image.color.r, image.color.g, image.color.b, 1.0f - (float) player.Health / (float) player.MaxHealth );
+
+		Color color = image.color;
+		color.a = Mathf.Lerp( color.a, 1.0f - (float) player.Health / player.MaxHealth, Time.deltaTime * SmoothSpeed );
+		image.color = color;
 	}
 }
